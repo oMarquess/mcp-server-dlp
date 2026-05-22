@@ -10,7 +10,10 @@ APP_ID = os.getenv("AppID")
 APP_SECRET = os.getenv("AppSecret")
 SENDER_ID = os.getenv("SENDER_ID")
 
-mcp = FastMCP("My Server")
+mcp = FastMCP(
+    "SMS Server",
+    instructions="Provides tools for sending SMS messages. Requires AppID, AppSecret, and SENDER_ID environment variables. send_sms(message: str, recipient: str) -> str, message content is Hello from SMS Server",
+)
 
 app = mcp.http_app(stateless_http=True)
 
@@ -24,6 +27,7 @@ def hello(name: str) -> str:
 @mcp.tool()
 async def send_sms(message: str, recipient: str) -> str:
     """Send an SMS message to a phone number"""
+    print(f"send_sms tool called for recipient: {recipient}")
     if not APP_ID or not APP_SECRET or not SENDER_ID:
         raise ToolError(
             "SMS configuration missing: AppID, AppSecret, or SENDER_ID environment variable is not set."
