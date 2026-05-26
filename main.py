@@ -39,6 +39,7 @@ async def send_sms(message: str, recipient: str) -> str:
             headers={
                 "Authorization": f"Bearer {token}",
                 "Content-Type": "application/json",
+                "User-Agent": "MCP Client",
             },
             json={
                 "sender_id": SENDER_ID,
