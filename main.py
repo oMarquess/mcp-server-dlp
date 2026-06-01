@@ -35,8 +35,8 @@ async def send_sms(message: str, recipient: str) -> str:
     token = f"{APP_ID}.{APP_SECRET}"
     async with httpx.AsyncClient() as client:
         response = await client.post(
-            # "https://api.letsfish.africa/v1/sms",
-            "http://api.delaphone.com/v1/sms",
+            "https://api.letsfish.africa/v1/sms",
+            # "http://api.delaphone.com/v1/sms",
             headers={
                 "Authorization": f"Bearer {token}",
                 "Content-Type": "application/json",
