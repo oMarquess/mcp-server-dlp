@@ -40,7 +40,8 @@ async def send_sms(message: str, recipient: str) -> str:
             headers={
                 "Authorization": f"Bearer {token}",
                 "Content-Type": "application/json",
-                "User-Agent": "MCP Client",
+                "User-Agent": "Mozilla/5.0 (compatible; DelaPhone/1.0)",
+
             },
             json={
                 "sender_id": SENDER_ID,
